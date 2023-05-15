@@ -14,24 +14,24 @@ public class AwsLinkMicro {
 		 * 사용법 가이드 
 		 * 1. aws 관련링크에서 segments.gz 파일을 다운로드 받습니다 
 		 * 2. 해당 파일 압축을 푼후, 안에 내용을 txt 파일로 다시 저장합니다.
+		 * 3.textFileLink 에 해당 txt 파일의 위치를 지정해 줍니다.
+		 * 4.aws 기본 링크를 적어 줍니다.
+		 * 5. 링크나누는 갯수를 linkCount 에 지정합니다 (예 : 3 -> 3조각)
+		 * 6. 해당 스크립트를 실행합니다. 그러면 콘솔에 링크가 표시됩니다. (해당 링크들은는 resultLink 에 또한 저장됩니다.)
+		   7. 빈 텍스트파일을 하나 열어서, 콘솔 전체를 복사 붙여 넣기 합니다.
+		   8. 각각의 링크를 따로  각각의 tmux new -t 에 설정 합니다.
 		 */		 
 		AwsLinkMicro awkLinkMicro = new AwsLinkMicro();
 		 
 		 //String textFileLink = "C://JavaProject/awsLinkPath/crawl-dataCC-MAIN-2020-16.txt";
 		 String textFileLink = "C://JavaProject/awsLinkPath/crawl-dataCC-MAIN-2020-24.txt";
-		 		// 3.textFileLink 에 해당 txt 파일의 위치를 지정해 줍니다.
 		 //String baseLink = "sudo -H -u filadmin aws s3 sync s3://commoncrawl/crawl-data/CC-MAIN-2020-16 /mnt/nas/crawl-data/CC-MAIN-2020-16";
 		 String baseLink = "sudo -H -u filadmin aws s3 sync s3://commoncrawl/crawl-data/CC-MAIN-2020-24 /mnt/dataset/crawl-data/CC-MAIN-2020-24";
-		 		// 4.aws 기본 링크를 적어 줍니다.
+		 		// 
 		 baseLink += " --exclude \"*\" "; 
 		 int linkCount = 10;
-		 		// 5. 링크나누는 갯수를 linkCount 에 지정합니다 (예 : 3 -> 3조각)
 		 List<String> resultLink = awkLinkMicro.awsLinkMacro(textFileLink,baseLink,linkCount);
-		 		// 6. 해당 스크립트를 실행합니다. 그러면 콘솔에 링크가 표시됩니다. (해당 링크들은는 resultLink 에 또한 저장됩니다.)
-		 		// 7. 빈 텍스트파일을 하나 열어서, 콘솔 전체를 복사 붙여 넣기 합니다.
-		 		// 8. 각각의 링크를 따로  각각의 tmux new -t 에 설정 합니다.
     }
-	//머야이거?
 	
 	public List<String> awsLinkMacro (String textFileLink,String baseLink, int linkCount){
 		
