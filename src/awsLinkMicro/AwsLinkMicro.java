@@ -22,14 +22,14 @@ public class AwsLinkMicro {
 		   8. 각각의 링크를 따로  각각의 tmux new -t 에 설정 합니다.
 		 */		 
 		AwsLinkMicro awkLinkMicro = new AwsLinkMicro();
-		 
+		 //singularity prep create -t /nvme CC-MAIN-2020-16 /dataset /mnt/nas/CC-MAIN-2020-16
 		 //String textFileLink = "C://JavaProject/awsLinkPath/crawl-dataCC-MAIN-2020-16.txt";
 		 String textFileLink = "C://JavaProject/awsLinkPath/crawl-dataCC-MAIN-2020-24.txt";
 		 //String baseLink = "sudo -H -u filadmin aws s3 sync s3://commoncrawl/crawl-data/CC-MAIN-2020-16 /mnt/nas/crawl-data/CC-MAIN-2020-16";
-		 String baseLink = "sudo -H -u filadmin aws s3 sync s3://commoncrawl/crawl-data/CC-MAIN-2020-24 /mnt/dataset/crawl-data/CC-MAIN-2020-24";
+		 String baseLink = "sudo -H -u filadmin aws s3 sync s3://commoncrawl/crawl-data/CC-MAIN-2020-24 /mnt/nas/crawl-data/CC-MAIN-2020-24";
 		 		// 
 		 baseLink += " --exclude \"*\" "; 
-		 int linkCount = 10;
+		 int linkCount = 3;
 		 List<String> resultLink = awkLinkMicro.awsLinkMacro(textFileLink,baseLink,linkCount);
     }
 	
